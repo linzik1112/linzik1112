@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style/list-mamber.css">
+  <link rel="stylesheet" href="../../js/bootstrap-3.4.1/docs/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../../style/bootstrap-table.min.css">
+  <script src="../../js/bootstrap-table-resizable.js" type="text/javascript"></script>
+  <script src="../../js/colresizable/colResizable-1.6.min.js" type="text/javascript"></script>
+  <script src="../../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+  <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+
+
+  <title>管理系统</title>
+</head>
+
+<body>
+<!--
+搜索框-->
+<div id="search box">
+
+
+</div>
+
+  <div>
+
+      <table class="table table-hover table-bordered table-striped" id="table1">
+ <thead>
+ <tr>
+
+ <th><a href="add.html"> <button type="submit" class="btn btn-default"  >添加</button></a>
+     <button type="submit" class="btn btn-default" >调整列宽</button></th>
+
+ </tr>
+ <tr>
+    <th>姓名</th>
+    <th>账号</th>
+    <th>手机号</th>
+     <th>操作</th>
+    </tr>
+</thead>
+ <tbody>
+
+
+ </tbody>
+  </table>
+
+</div>
+
+
+</body>
+</html>
+<script>
+//准备数据
+var dates=[{
+    name: '卢成',
+    account: '61515511541',
+    phone: '18705333821'
+},{
+    name:'杨淑婷',
+    account:'6151522211541',
+    phone:'187053222',},
+    {
+        name:'王依杰',
+        account:'6151511511541',
+        phone:'18705323821'
+}];
+
+
+//往tboy创建行，通过数组长度
+var tbody=document.querySelector('tbody');
+for (i=0;i<dates.length;i++){
+//创建行
+    var tr =document.createElement('tr');
+    tbody.appendChild(tr);
+    //行里面创建单元格td列，数量取属性个数
+    for(var k in dates[i]){   ///里面循环td
+        //创建单元格
+        var td=document.createElement('td');
+        //把属性值给td
+        td.innerHTML=dates[i][k];
+        tr.appendChild(td);
+    }
+//创建删除单元格功能
+    var td =document.createElement('td');
+    td.innerHTML='<button type="submit" class="btn btn-default" href="javascript">删除</button>';
+
+    tr.appendChild(td);
+
+}
+//删除功能
+var as=document.querySelectorAll('button');
+for (var i=0;i<as.length;i++){
+    as[i].onclick=function (){
+
+        tbody.removeChild(this.parentNode.parentNode)
+    }
+}
+
+
+
+
+
+</script>
+
+
